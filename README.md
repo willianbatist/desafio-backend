@@ -38,6 +38,12 @@ Você deve criar um serviço com os seguintes requisitos:
 3. O projeto deve ter um README.md com todas as instruções sobre como executar e testar o projeto e os serviços disponibilizados.
 4. O projeto deve conter testes automatizados.
 
+## Bônus
+1. Todo ambiente estar configurado para o docker, e possa ser executado com apenas algumas linhas de código.
+2. Utilizar o Swagger para documentar a API.
+3. Adicionar processo de CI no github actions, onde os testes automatizados sejam executados a cada push na PR.
+4. Adicionar paginação na listagem.
+
 ## Avaliação
 
 1. O desafio deve ser enviado para a pessoa do RH que estiver em contato com você, no formato de `.zip` ou um link para um repositório do Github
