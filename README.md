@@ -1,52 +1,51 @@
-# Desafio Back-end - Housi
+<div align="center">
+  <img
+    src="assets/banner.png"
+    alt="Desafio Backend"
+    style="width: 100%"
+  />
+  <p> Desafio Back-end - Housi</p>
+</div>
 
-Nesse desafio você construirá uma versão simplificada de um sistema de gerenciamento de reservas de apartamentos.
-Faça um fork desse repositório e ao final do desafio, abra um pull request e nos envie para que possamos corrigir
-## Contexto
+**Objetivo:** Desenvolver uma API backend para gerenciar reservas, utilizando MongoDB. A API deve ser capaz de retornar um conjunto de datas bloqueadas baseadas em um intervalo de tempo definido.
 
-Um sistema de gestão de reservas é um sistema que centraliza diversas funções em uma única ferramenta. Com um Central Reservation System, ou CRS – na sigla em inglês – eficiente, você consegue incrementar o seu serviço e otimizar a forma como o trabalho é feito no dia a dia, melhorando o aproveitamento do seu tempo, das tarefas mais básicas às mais exigentes.
+## Tarefa Principal:
 
-Neste cenário nosso CRS deve permitir que seja possível:
-1. Adicionar reservas
-2. Atualizar reservas
-3. Visualizar reservas
-4. Remover reservas
+- Implementar uma rota que interaja com um banco de dados MongoDB contendo informações de reservas.
+- Esta rota deve aceitar dois parâmetros, `start` e `end`, que definem o início e o fim de um período.
+- A API deve processar esses parâmetros e retornar um array de datas que representem todas as datas bloqueadas dentro do intervalo especificado. Caso não seja informado, deve retornar todos os bloqueios de hoje em diante.
+- A solução deve ser replicável utilizando Docker, garantindo facilidade de configuração e execução.
+- Providenciar documentação clara para a instalação e execução do projeto.
 
+**Exemplo de Uso:**
 
-## Requisitos
+```json
+{
+  "host": "localhost:3000",
+  "endpoint": "/properties/:id/busy-dates",
+  "method": "GET",
+  "queryParams": {
+    "start": "2024-01-01", // opcional
+    "end": "2024-01-30" // opcional
+  },
+  "response": [
+    "2024-01-03",
+    "2024-01-05",
+    "2024-01-08",
+    "2024-01-09",
+    "2024-01-10",
+    ...
+  ]
+}
+```
 
-Você deve criar um serviço com os seguintes requisitos:
+## Bônus (Opcional)
 
-1. Deve ser possível criar reservas com as seguintes informações:
-	* Nome do apartamento
-	* Data de check-in
-	* Data de check-out
-	* Quantidade de hóspedes
-	* Nome do(s) hóspede(s)
-	* E-mail dos hóspedes 
-2. Deve ser possível editar uma reserva
-3. Deve ser possível remover uma reserva
-4. Deve ser possível listar as reservas já criadas
-5. Deve ser possível filtrar as reservas por data de check-in e check-out
-6. O serviço deve garantir que não exista conflito de datas entre as reservas
+- Criação de uma documentação detalhada para a API (utilizando ferramentas como Swagger).
+- Implementação de índices apropriados no MongoDB para otimizar a consulta das datas bloqueadas.
+- Desenvolvimento de testes unitários para garantir a funcionalidade e a qualidade do código.
 
+## OBS
 
-## Restrições
-
-1. O serviço deve ser escrito em Node.js com TypeScript
-2. O serviço deve armazenar informações em um banco de dados MongoDB.
-3. O projeto deve ter um README.md com todas as instruções sobre como executar e testar o projeto e os serviços disponibilizados.
-4. O projeto deve conter testes automatizados.
-
-## Bônus
-1. Todo ambiente estar configurado para o docker, e possa ser executado com apenas algumas linhas de código.
-2. Utilizar o Swagger para documentar a API.
-3. Adicionar processo de CI no github actions, onde os testes automatizados sejam executados a cada push na PR.
-4. Adicionar paginação na listagem.
-
-## Avaliação
-
-1. O desafio deve ser enviado para a pessoa de _People_ que estiver em contato com você, no formato de `.zip` ou um link para um repositório do Github
-2. Iremos te avaliar pela arquitetura do serviço, qualidade do código, entendimento das regras de negócio, capricho com o desafio e o quão preparado esse serviço estaria para ser rodado em produção
-3. Achamos que **1 semana** é um tempo ok para fazer o desafio, mas sabemos que nem todo mundo tem o mesmo nível de disponibilidade. Portanto, nos avise se precisar de mais tempo, ok?
-4. Boa sorte :)
+> Utilize o arquivo `seed.json` para popular seu banco de dados no MongoDB.
+> A escolha de linguagem de programação e framework é livre. Se optar por utilizar Node.js, o uso de TypeScript é obrigatório.
