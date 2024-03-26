@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
-    "seed": "npx ts-node src/reservation/seed/seed.ts", 
+    "seed": "npx ts-node src/reservation/seed/seed.ts",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -26,6 +26,7 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/mongoose": "^10.0.4",
     "@nestjs/platform-express": "^10.0.0",
+    "moment": "^2.30.1",
     "mongoose": "^8.2.3",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1"
