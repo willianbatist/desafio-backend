@@ -1,26 +1,16 @@
 import { Injectable } from '@nestjs/common';
-// import { CreateReservationDto } from './dto/create-reservation.dto';
-// import { UpdateReservationDto } from './dto/update-reservation.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Reservation } from './schemas/reservation.schema';
 
 @Injectable()
 export class ReservationService {
-  // create(createReservationDto: CreateReservationDto) {
-  //   return 'This action adds a new reservation';
-  // }
+  constructor(
+    @InjectModel('reservation') // Corrigido para corresponder ao nome do modelo no MongooseModule.forFeature
+    private readonly reservationModel: Model<Reservation>,
+  ) {}
 
-  findAll() {
-    return `This action returns all reservation`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} reservation`;
-  }
-
-  // update(id: number, updateReservationDto: UpdateReservationDto) {
-  //   return `This action updates a #${id} reservation`;
-  // }
-
-  remove(id: number) {
-    return `This action removes a #${id} reservation`;
+  async findPropertyId(propertyId: string) {
+    return await this.reservationModel.find({ propertyId }).exec();
   }
 }

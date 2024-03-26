@@ -29,7 +29,7 @@ fs.readFile(filePath, 'utf8', async (err, data) => {
 
         // Remover chave $oid e converter para string
         item._id = item._id['$oid'];
-        item.property._id = item.property._id['$oid'];
+        item.propertyId = item.property._id['$oid']; // Adicionando propertyId com o ID da propriedade
 
         // Ajustar residents
         item.residents = item.residents.map((resident: any) => ({
