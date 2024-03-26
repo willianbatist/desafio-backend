@@ -8,7 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
   imports: [
     ReservationModule,
     MongooseModule.forRoot(
-      'mongodb://admin:adminpassword@localhost:27017/housi',
+      'mongodb://admin:adminpassword@localhost:27017/admin',
     ),
   ],
   controllers: [AppController],
