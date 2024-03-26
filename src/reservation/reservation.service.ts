@@ -6,7 +6,7 @@ import { Reservation } from './schemas/reservation.schema';
 @Injectable()
 export class ReservationService {
   constructor(
-    @InjectModel('reservation') // Corrigido para corresponder ao nome do modelo no MongooseModule.forFeature
+    @InjectModel('reservation')
     private readonly reservationModel: Model<Reservation>,
   ) {}
 
