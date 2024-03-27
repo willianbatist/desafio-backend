@@ -43,7 +43,9 @@ Acesse a raiz do projeto, abra o terminal, em seguida digite:
     docker-compose -f docker-compose.yml up -d
 
 <br>
+
 **Com o docker-compose ativo, a API estará acessível em http://localhost:3000/** 
+
 **E a documentação da API no Swagger estará disponível em http://localhost:3000/api**
 
 :warning: **Optei por não utilizar o arquivo .env apenas para simplificar a visualização do desafio, porém, utilizo em uma aplicação real.**
