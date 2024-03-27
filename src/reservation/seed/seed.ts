@@ -16,32 +16,43 @@ fs.readFile(filePath, 'utf8', async (err, data) => {
 
   try {
     await mongoose.connect(
-      'mongodb://admin:adminpassword@localhost:27017/admin',
+      'mongodb://admin:adminpassword@db:27017/admin',
     );
 
-    const adjustData = (data: any) => {
-      const adjustedData = data.map((item: any) => {
-        item.checkIn = new Date(item.checkIn['$date']);
-        item.checkOut = new Date(item.checkOut['$date']);
+    // Verifique se já existem dados na coleção
+    const count = await ReservationModel.countDocuments();
+    if (count > 0) {
+      console.log('Dados já existem na coleção reservation, não inserindo dados da seed');
+      return;
+    }
 
-        item._id = item._id['$oid'];
-        item.propertyId = item.property._id['$oid'];
+    try {
+      const adjustData = (data: any) => {
+        const adjustedData = data.map((item: any) => {
+          item.checkIn = new Date(item.checkIn['$date']);
+          item.checkOut = new Date(item.checkOut['$date']);
 
-        item.residents = item.residents.map((resident: any) => ({
-          ...resident,
-          userId: resident.userId['$oid'],
-        }));
+          item._id = item._id['$oid'];
+          item.propertyId = item.property._id['$oid'];
 
-        return item;
-      });
+          item.residents = item.residents.map((resident: any) => ({
+            ...resident,
+            userId: resident.userId['$oid'],
+          }));
 
-      return adjustedData;
-    };
+          return item;
+        });
 
-    const adjustedData = adjustData(seedData);
+        return adjustedData;
+      };
 
-    await ReservationModel.insertMany(adjustedData);
-    console.log('Dados inseridos com sucesso na coleção reservation');
+      const adjustedData = adjustData(seedData);
+
+      await ReservationModel.insertMany(adjustedData);
+      console.log('Dados inseridos com sucesso na coleção reservation');
+    } catch (error) {
+      console.error('Erro ao inserir dados:', error);
+    }
   } catch (error) {
     console.error('Erro ao conectar ao banco de dados:', error);
   } finally {

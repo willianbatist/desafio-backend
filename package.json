@@ -6,8 +6,9 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "docker": "docker-compose -f docker-compose.yml up -d",
     "build": "nest build",
-    "seed": "npx ts-node src/reservation/seed/seed.ts",
+    "seed": "npm install && npx ts-node src/reservation/seed/seed.ts && npx nest start",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
