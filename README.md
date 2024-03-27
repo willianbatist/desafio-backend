@@ -28,7 +28,7 @@
 
 O prejeto é uma API backend que foi desenvolvida com o objetivo de gerenciar reservas, utilizando MongoDB como banco de dados. Sua funcionalidade principal é fornecer um conjunto de datas bloqueadas, conforme especificado em um intervalo de tempo definido pelo usuário.
 
-:warning: Observação é necessário ter o docker-compose instalado.
+:warning: *Observação é necessário ter o docker-compose instalado.*
 
 ## Inciando o projeto
 
